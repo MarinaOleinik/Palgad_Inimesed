@@ -58,15 +58,61 @@ def sorteerimine(i,p,v):
                     i[n]=i[m]
                     i[m]=abi
     andmed_ekranile(i,p)
-
+    return i,p
+def sort_nimi_jargi(p,i,v):
+    N=len(p)
+    if v==1:
+        for n in range(0,N):
+            for m in range(n,N):
+                if p[n]<p[m]:
+                    abi=p[n]
+                    p[n]=p[m]
+                    p[m]=abi
+                    abi=i[n]
+                    i[n]=i[m]
+                    i[m]=abi
+    else:
+        for n in range(0,N):
+            for m in range(n,N):
+                if  p[n]>p[m]:#< - >
+                    abi=p[n]
+                    p[n]=p[m]
+                    p[m]=abi
+                    abi=i[n]
+                    i[n]=i[m]
+                    i[m]=abi
+    andmed_ekranile(i,p)
+    return i,p
 def vordsed_palgad(i,p):
     N=len(p)
-    dublikatid=[x for x in palgad if palgad.count(x)>1 ]
-    print(list(set(dublikatid)))
+    dublikatid=[x for x in p if p.count(x)>1 ]
+    dublikatid=list(set(dublikatid))
+    print(dublikatid) #[2000,122]
+    for palk in dublikatid: #2000, n=3
+        n=p.count(palk)
+        k=-1 #-----
+        for j in range(n):            
+            k=p.index(palk,k+1)#-----
+            nimi=i[k]
+            print(palk,"saab kätte",nimi)
+def keskmine(i,p):
+    summa=0
+    t=True
+    for palk in p:
+        summa+=palk
+    summa/=len(p)
+    print("Keskmine palk: ",summa)
+    for palk in p:
+        if palk==summa:
+            n=p.index(palk)
+            print("Saab kätte",i[n])
+        else:
+            t=False
+        if t==False:   print("Sellised inimesed puudubad")
+inimesed=["A","B","C"]
+palgad=[3000,2000,1000]
+keskmine(inimesed, palgad) 
 
-inimesed=["A","B","C","D"]
-palgad=[2000,2000,122,122]
-                   
 while 1:
     print("a-sisesta\ne-ekaranile\nk-kustuta\nmax-kellel on suurim palk\ns-sort")
     valik=input()
@@ -79,7 +125,7 @@ while 1:
     elif valik.lower()=="max":
         suurim_palk(inimesed,palgad)
     elif valik.lower()=="s":
-        sorteerimine(inimesed,palgad,int(input("1-kahaneb, 2-kasvab ")))
+        inimesed,palgad=sorteerimine(inimesed,palgad,int(input("1-kahaneb, 2-kasvab ")))
     elif valik.lower()=="d":
         vordsed_palgad(inimesed,palgad)
     else:
