@@ -1,6 +1,6 @@
 from random import *
 
-def sisesta_andmed(i,p):
+def sisesta_andmed(i: list,p: list):
     global N
     N=4
     for n in range(N):
@@ -97,7 +97,7 @@ def vordsed_palgad(i,p):
             print(palk,"saab kätte",nimi)
 def keskmine(i,p):
     summa=0
-    t=True
+    t=False
     for palk in p:
         summa+=palk
     summa/=len(p)
@@ -106,9 +106,9 @@ def keskmine(i,p):
         if palk==summa:
             n=p.index(palk)
             print("Saab kätte",i[n])
-        else:
-            t=False
-        if t==False:   print("Sellised inimesed puudubad")
+            t=True
+
+    if t!=True:   print("Sellised inimesed puudubad")
 inimesed=["A","B","C"]
 palgad=[3000,2000,1000]
 keskmine(inimesed, palgad) 
