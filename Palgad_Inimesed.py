@@ -9,7 +9,6 @@ def sisesta_andmed(i: list,p: list):
         palk=randint(100,10000)
         p.append(palk)
     return i,p
-
 def andmed_ekranile(i,p):
     N=len(i)
     for n in range(N):
@@ -35,7 +34,16 @@ def kustutamine(i,p): #Удалить человека и его зарплат�
 def suurim_palk(i,p):
     suurim=max(p)
     #count() for abi_list p.index()->i.index() andmed_ekranile(abi_list)
-def sorteerimine(i,p,v):
+def sorteerimine(i: list,p: list,v: int):
+    """Sorteerimine palgade järgi.
+    
+    Tagastame inimeste ja palgade listid teise funktsiooni kasutamisel
+    
+    :param list i: Inimeste järjend.
+    :param list p: Palgade järjend.
+    :param int v: sorteerimise tüüp
+    :rtype: list,list
+    """
     N=len(p)
     if v==1:
         for n in range(0,N):
