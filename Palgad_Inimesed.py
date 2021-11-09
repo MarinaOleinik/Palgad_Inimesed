@@ -34,6 +34,7 @@ def kustutamine(i,p): #Удалить человека и его зарплат�
 def suurim_palk(i,p):
     suurim=max(p)
     #count() for abi_list p.index()->i.index() andmed_ekranile(abi_list)
+
 def sorteerimine(i: list,p: list,v: int):
     """Sorteerimine palgade järgi.
     
@@ -67,6 +68,7 @@ def sorteerimine(i: list,p: list,v: int):
                     i[m]=abi
     andmed_ekranile(i,p)
     return i,p
+
 def sort_nimi_jargi(p,i,v):
     N=len(p)
     if v==1:
